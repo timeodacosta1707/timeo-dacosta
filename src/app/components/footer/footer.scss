@@ -7,13 +7,11 @@
         justify-content: space-between;
         padding: 50px;
         
-        // --- RESPONSIVITÉ ---
-        // Passage en colonne sur tablette/mobile (ex: < 768px)
         @media (max-width: 768px) {
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 40px; // Espace entre les sections
+            gap: 40px;
             padding: 30px 20px;
         }
 
@@ -21,7 +19,6 @@
             width: 150px;
             height: 150px;
             filter: brightness(0.32);
-            // Ajustement optionnel si le logo est trop grand sur mobile
             @media (max-width: 768px) {
                 width: 120px;
                 height: 120px;
@@ -35,7 +32,7 @@
                 font-family: "Anton-Regular";
                 
                 @media (max-width: 768px) {
-                    font-size: 35px; // Réduction du titre
+                    font-size: 35px;
                     margin-bottom: 10px;
                 }
             }
@@ -57,7 +54,7 @@
                     }
 
                     @media (max-width: 768px) {
-                        font-size: 24px; // Réduction des liens
+                        font-size: 24px;
                         line-height: 35px;
                     }
                 }
@@ -66,6 +63,7 @@
 
         .contact-me {
             h1 {
+                text-align: center;
                 font-size: 50px;
                 color: #6F040E;
                 font-family: "Anton-Regular";
@@ -91,7 +89,7 @@
                     }
                     
                     @media (max-width: 768px) {
-                        width: 40px; // Icônes légèrement plus petites
+                        width: 40px;
                     }
                 }
             }
@@ -108,10 +106,9 @@
         width: 75%;
         border-top: 3px solid #6F040E;
 
-        // --- RESPONSIVITÉ RGPD ---
         @media (max-width: 900px) {
-            width: 90%; // On prend plus de largeur sur petit écran
-            flex-direction: column; // On empile copyright et liens
+            width: 90%;
+            flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 20px;
@@ -123,7 +120,7 @@
             gap: 4rem;
 
             @media (max-width: 768px) {
-                flex-direction: column; // Les liens légaux l'un sous l'autre sur mobile
+                flex-direction: column;
                 gap: 1rem;
             }
 

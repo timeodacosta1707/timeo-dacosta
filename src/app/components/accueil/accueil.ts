@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+// IMPORTANT : Vérifie que le chemin d'import est correct par rapport à ton architecture de dossiers
+import { Technologies } from '../technologies/technologies'; 
 
 @Component({
 	selector: 'app-accueil',
-	imports: [],
+	// Ajoute Technologies dans le tableau imports
+	imports: [Technologies], 
 	templateUrl: './accueil.html',
 	styleUrl: './accueil.scss',
 })
@@ -15,14 +18,15 @@ export class Accueil implements OnInit {
 
 	scrollToTechnologies() {
 		const element = document.getElementById('technologies');
-
-		if (element) {
+		// ... ton code existant
+        if (element) {
 			element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
 
 	calculateAge() {
-		const birthDate = new Date('2006-07-17');
+		// ... ton code existant
+        const birthDate = new Date('2006-07-17');
 		const today = new Date();
 
 		let age = today.getFullYear() - birthDate.getFullYear();
