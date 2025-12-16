@@ -1,51 +1,139 @@
-.footer {
+.footer-container {
     background-color: #0D0D0D;
-    display: flex;
-    justify-content: space-between;
-    padding: 50px;
-    .logo {
-        width: 150px;
-        height: 150px;
-        filter: brightness(0.32);
-    }
-    .liens-rapides {
-        h1 {
-            font-size: 50px;
-            color: #6F040E;
-            font-family: "Anton-Regular";
-        }
-        .liens {
-            display: flex;
+
+    .footer {
+        background-color: #0D0D0D;
+        display: flex;
+        justify-content: space-between;
+        padding: 50px;
+        
+        // --- RESPONSIVITÉ ---
+        // Passage en colonne sur tablette/mobile (ex: < 768px)
+        @media (max-width: 768px) {
             flex-direction: column;
-            line-height: 45px;
-            a {
-                text-decoration: none;
-                color: #525252;
-                font-size: 40px;
+            align-items: center;
+            text-align: center;
+            gap: 40px; // Espace entre les sections
+            padding: 30px 20px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            filter: brightness(0.32);
+            // Ajustement optionnel si le logo est trop grand sur mobile
+            @media (max-width: 768px) {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        .liens-rapides {
+            h1 {
+                font-size: 50px;
+                color: #6F040E;
                 font-family: "Anton-Regular";
-                transition: all 0.3s ease;
-                &:hover {
-                    color: #ffffff;
+                
+                @media (max-width: 768px) {
+                    font-size: 35px; // Réduction du titre
+                    margin-bottom: 10px;
+                }
+            }
+
+            .liens {
+                display: flex;
+                flex-direction: column;
+                line-height: 45px;
+
+                a {
+                    text-decoration: none;
+                    color: #525252;
+                    font-size: 40px;
+                    font-family: "Anton-Regular";
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+
+                    @media (max-width: 768px) {
+                        font-size: 24px; // Réduction des liens
+                        line-height: 35px;
+                    }
+                }
+            }
+        }
+
+        .contact-me {
+            h1 {
+                font-size: 50px;
+                color: #6F040E;
+                font-family: "Anton-Regular";
+
+                @media (max-width: 768px) {
+                    font-size: 35px;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .icons {
+                display: flex;
+                gap: 35px;
+                justify-content: center;
+
+                img {
+                    width: 50px;
+                    height: auto;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        filter: brightness(0) invert(100%);
+                    }
+                    
+                    @media (max-width: 768px) {
+                        width: 40px; // Icônes légèrement plus petites
+                    }
                 }
             }
         }
     }
-    .contact-me {
-        h1 {
-            font-size: 50px;
-            color: #6F040E;
-            font-family: "Anton-Regular";
+
+    .rgpd {
+        margin: auto;
+        color: #525252;
+        display: flex;
+        font-family: "Anton-Regular";
+        justify-content: space-between;
+        padding: 50px;
+        width: 75%;
+        border-top: 3px solid #6F040E;
+
+        // --- RESPONSIVITÉ RGPD ---
+        @media (max-width: 900px) {
+            width: 90%; // On prend plus de largeur sur petit écran
+            flex-direction: column; // On empile copyright et liens
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            padding: 30px 10px;
         }
-        .icons {
+
+        .links {
             display: flex;
-            gap: 35px;
-            justify-content: center;
-            img {
-                width: 50px;
-                height: auto;
+            gap: 4rem;
+
+            @media (max-width: 768px) {
+                flex-direction: column; // Les liens légaux l'un sous l'autre sur mobile
+                gap: 1rem;
+            }
+
+            a {
+                color: #525252;
+                text-decoration: none;
                 transition: all 0.3s ease;
+
                 &:hover {
-                    filter: brightness(0) invert(100%),
+                    color: #ffffff;
                 }
             }
         }
