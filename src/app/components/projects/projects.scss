@@ -23,11 +23,17 @@
         padding-left: 80px;
 
         h1 {
-            font-size: clamp(60px, 16vh, 150px);
+            // CORRECTION ICI : 
+            // - Min: 40px (pour ne pas être illisible)
+            // - Val: 13vw (s'adapte à la largeur de l'écran et non la hauteur)
+            // - Max: 150px (pour les grands écrans)
+            font-size: clamp(40px, 13vw, 150px);
+            
             font-family: "Anton-Regular", sans-serif;
             color: #6F040E;
             margin: 0;
             line-height: 0.9;
+            word-wrap: break-word; // Sécurité supplémentaire
         }
 
         .project-title-detail {
@@ -67,24 +73,16 @@
 }
 
 @keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
+    0%, 20%, 50%, 80%, 100% {
         transform: translateX(-50%) translateY(0);
     }
-
     40% {
         transform: translateX(-50%) translateY(-10px);
     }
-
     60% {
         transform: translateX(-50%) translateY(-5px);
     }
 }
-
 
 .projects-carousel-section {
     background-color: #101010;
@@ -405,7 +403,6 @@
                 border-radius: 6px;
                 cursor: pointer;
                 transition: background 0.3s, transform 0.2s, border-color 0.3s;
-
                 white-space: nowrap;
                 flex: 1;
                 min-width: fit-content;
@@ -443,13 +440,11 @@
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
 
 @media (max-width: 1024px) {
     .project-detail-view {
