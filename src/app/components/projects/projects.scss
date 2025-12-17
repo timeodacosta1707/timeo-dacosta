@@ -9,6 +9,10 @@
     background-position: 75% center;
     background-color: #101010;
 
+    @media (min-width: 1024px) {
+        background-position: center center;
+    }
+
     display: flex;
     align-items: center;
     position: relative;
@@ -23,17 +27,13 @@
         padding-left: 80px;
 
         h1 {
-            // CORRECTION ICI : 
-            // - Min: 40px (pour ne pas être illisible)
-            // - Val: 13vw (s'adapte à la largeur de l'écran et non la hauteur)
-            // - Max: 150px (pour les grands écrans)
             font-size: clamp(40px, 13vw, 150px);
             
             font-family: "Anton-Regular", sans-serif;
             color: #6F040E;
             margin: 0;
             line-height: 0.9;
-            word-wrap: break-word; // Sécurité supplémentaire
+            word-wrap: break-word;
         }
 
         .project-title-detail {
