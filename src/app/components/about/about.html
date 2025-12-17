@@ -1,6 +1,6 @@
 <section class="about-fullscreen">
     <div class="overlay"></div>
-    
+
     <div class="content-wrapper">
         <div class="title-block">
             <h1>À PROPOS</h1>
@@ -13,48 +13,105 @@
             <p>{{ bioDescription }}</p>
         </div>
     </div>
-
-    <div class="scroll-down">
-        <span>SCROLL</span>
-        <div class="line"></div>
-    </div>
 </section>
 
 <section class="timeline-section">
     <h2 class="timeline-title">MON PARCOURS</h2>
-    
-    <div class="timeline-container">
-        <div class="timeline-path"></div>
 
-        @for (item of timelineData; track $index) {
-            <div class="timeline-item" 
-                 [class.left]="$index % 2 === 0" 
-                 [class.right]="$index % 2 !== 0"
-                 [style.animation-delay]="$index * 0.2 + 's'">
-                
+    <div class="timeline-container">
+        <div class="timeline-track">
+            <div class="timeline-line"></div>
+
+            @for (item of timelineData; track $index) {
+            <article class="timeline-item">
                 <div class="timeline-content">
                     <span class="year">{{ item.year }}</span>
                     <h3>{{ item.title }}</h3>
                     @if(item.location) {
-                        <span class="location">{{ item.location }}</span>
+                    <span class="location">{{ item.location }}</span>
                     }
                     <p>{{ item.description }}</p>
                 </div>
-                
                 <div class="connector"></div>
-
                 <div class="timeline-dot"></div>
+            </article>
+            }
+
+            <div class="timeline-marker">
+                <div class="marker-content">
+                    <i class="loop-icon">⟳</i>
+                    <span>Reboot</span>
+                </div>
             </div>
+
+            @for (item of timelineData; track $index) {
+            <article class="timeline-item duplicate">
+                <div class="timeline-content">
+                    <span class="year">{{ item.year }}</span>
+                    <h3>{{ item.title }}</h3>
+                    @if(item.location) {
+                    <span class="location">{{ item.location }}</span>
+                    }
+                    <p>{{ item.description }}</p>
+                </div>
+                <div class="connector"></div>
+                <div class="timeline-dot"></div>
+            </article>
+            }
+
+            <div class="timeline-marker">
+                <div class="marker-content">
+                    <i class="loop-icon">⟳</i>
+                    <span>Reboot</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vision-section">
+    <div class="vision-container">
+        @for (item of visionData; track $index) {
+        <div class="vision-card">
+            <div class="vision-header">
+                <span class="vision-number">{{ item.number }}</span>
+                <h3>{{ item.title }}</h3>
+            </div>
+            <p>{{ item.description }}</p>
+            <div class="vision-line"></div>
+        </div>
         }
     </div>
 </section>
 
-<section class="cta-section">
-    <div class="cta-content">
-        <h2>UNE IDÉE EN TÊTE ?</h2>
-        <a href="mailto:ton.email@exemple.com" class="cta-btn">
-            <span>ME CONTACTER</span>
-            <div class="hover-effect"></div>
-        </a>
+<section class="interests-section">
+    <div class="interests-container">
+        <h2 class="section-title">HORS ÉCRAN</h2>
+
+        <div class="panels-wrapper">
+            @for (item of interestsData; track $index) {
+            <div class="interest-panel" [style.--total-images]="item.images.length">
+                <div class="panel-images">
+                    @for (img of item.images; track $index; let i = $index) {
+                    <div class="bg-img" 
+                         [style.background-image]="'url(' + img + ')'" 
+                         [style.--img-index]="i">
+                    </div>
+                    }
+                </div>
+
+                <div class="panel-overlay"></div>
+
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <span class="interest-label">{{ item.label }}</span>
+                        <h3 class="interest-topic">{{ item.topic }}</h3>
+                    </div>
+                    <p class="interest-text">{{ item.text }}</p>
+                    <div class="panel-icon">+</div>
+                </div>
+            </div>
+            }
+        </div>
     </div>
 </section>
