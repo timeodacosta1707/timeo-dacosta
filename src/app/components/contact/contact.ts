@@ -20,8 +20,8 @@ export class Contact {
 	email = "dacostatimeo@gmail.com";
 
 	socials: SocialLink[] = [
-		{ name: 'LinkedIn', url: 'https://linkedin.com', icon: '/svg/icons/linkedin.svg' },
-		{ name: 'GitHub', url: 'https://github.com', icon: '/svg/icons/github.svg' },
+		{ name: 'LinkedIn', url: 'https://www.linkedin.com/in/tim%C3%A9o-da-costa-078b15237/', icon: '/svg/icons/linkedin.svg' },
+		{ name: 'GitHub', url: 'https://github.com/timeodacosta1707', icon: '/svg/icons/github.svg' },
 		{ name: 'Instagram', url: 'https://instagram.com', icon: '/svg/icons/instagram.svg' }
 	];
 
