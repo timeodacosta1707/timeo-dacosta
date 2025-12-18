@@ -1,24 +1,33 @@
 <nav class="navbar">
-    <button class="navbar__hamburger">
-        <img src="/svg/hamburger.svg" alt="">
+
+    <button class="navbar__hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+        <img src="/svg/hamburger.svg" alt="Menu">
     </button>
+
     <div class="navbar__left">
-        <a class="logo" href="/">
+        <a class="logo" routerLink="/" (click)="closeMenu()">
             Timéo DA COSTA
         </a>
     </div>
+
     <div class="navbar__right">
-        <a routerLink="/">
-            Accueil
-        </a>
-        <a routerLink="/about">
-            A propos
-        </a>
-        <a routerLink="/projects">
-            Mes projets
-        </a>
-        <a routerLink="/contact">
-            Contact
-        </a>
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+        <a routerLink="/about" routerLinkActive="active-link">A propos</a>
+        <a routerLink="/projects" routerLinkActive="active-link">Mes projets</a>
+        <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
     </div>
+
+    <div class="mobile-overlay" [class.open]="isMenuOpen">
+        <div class="mobile-links">
+            <a routerLink="/" (click)="closeMenu()">ACCUEIL</a>
+            <a routerLink="/about" (click)="closeMenu()">À PROPOS</a>
+            <a routerLink="/projects" (click)="closeMenu()">PROJETS</a>
+            <a routerLink="/contact" (click)="closeMenu()">CONTACT</a>
+        </div>
+
+        <div class="mobile-footer">
+            <span>&copy; 2026 TIMÉO DA COSTA</span>
+        </div>
+    </div>
+
 </nav>

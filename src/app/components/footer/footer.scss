@@ -6,7 +6,7 @@
         display: flex;
         justify-content: space-between;
         padding: 50px;
-        
+
         @media (max-width: 768px) {
             flex-direction: column;
             align-items: center;
@@ -19,6 +19,7 @@
             width: 150px;
             height: 150px;
             filter: brightness(0.32);
+
             @media (max-width: 768px) {
                 width: 120px;
                 height: 120px;
@@ -30,7 +31,7 @@
                 font-size: 50px;
                 color: #6F040E;
                 font-family: "Anton-Regular";
-                
+
                 @media (max-width: 768px) {
                     font-size: 35px;
                     margin-bottom: 10px;
@@ -48,6 +49,11 @@
                     font-size: 40px;
                     font-family: "Anton-Regular";
                     transition: all 0.3s ease;
+
+                    /* FIX : L'état actif est imbriqué ici pour avoir la priorité */
+                    &.active-link {
+                        color: #ffffff;
+                    }
 
                     &:hover {
                         color: #ffffff;
@@ -87,11 +93,12 @@
                     &:hover {
                         filter: brightness(0) invert(100%);
                     }
-                    
+
                     @media (max-width: 768px) {
                         width: 40px;
                     }
                 }
+
                 @media (min-width: 768px) {
                     .telephone {
                         display: none;
@@ -133,6 +140,11 @@
                 color: #525252;
                 text-decoration: none;
                 transition: all 0.3s ease;
+
+                /* FIX : Ajouté également ici pour les liens du bas */
+                &.active-link {
+                    color: #ffffff;
+                }
 
                 &:hover {
                     color: #ffffff;

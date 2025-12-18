@@ -119,20 +119,41 @@ $text-white: #ffffff;
                 background: none;
                 border: none;
                 color: $text-white;
-                font-family: "Anton-Regular";
-                font-size: 2rem;
+
+                /* Police lisible pour la saisie */
+                font-family: "ClashGrotesk-SemiBold", sans-serif;
+                font-size: 1.3rem;
                 padding: 10px 0;
                 outline: none;
-                text-transform: uppercase;
+                text-transform: none;
+                /* Permet d'écrire en minuscules */
 
                 &::placeholder {
                     color: rgba(255, 255, 255, 0.15);
                     transition: color 0.3s;
+                    /* On garde le style "Titre" pour le placeholder */
+                    font-family: "Anton-Regular";
+                    text-transform: uppercase;
+                    font-size: 2rem;
                 }
 
                 &:focus::placeholder {
                     color: rgba(255, 255, 255, 0.05);
                 }
+            }
+
+            /* Spécifique au TEXTAREA */
+            textarea {
+                resize: vertical;
+                /* Autorise seulement l'étirement vertical */
+                min-height: 150px;
+                /* Hauteur minimale de base */
+                max-height: 300px;
+                /* Optionnel : Hauteur max pour pas casser le design */
+                line-height: 1.5;
+                /* Espacement des lignes pour la lisibilité */
+                display: block;
+                /* Évite les espaces fantômes */
             }
 
             .focus-line {
