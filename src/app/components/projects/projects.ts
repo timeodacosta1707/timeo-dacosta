@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, NgZone, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProjectCard } from '../project-card/project-card';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -39,7 +39,7 @@ type TrackType = 'top' | 'bottom' | null;
 @Component({
 	selector: 'app-projects',
 	standalone: true,
-	imports: [CommonModule, ProjectCard],
+	imports: [ CommonModule, ProjectCard, RouterLink ],
 	templateUrl: './projects.html',
 	styleUrl: './projects.scss',
 })

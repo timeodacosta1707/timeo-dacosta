@@ -25,8 +25,10 @@ $text-white: #ffffff;
 
     .overlay {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: 1;
     }
@@ -39,10 +41,10 @@ $text-white: #ffffff;
         height: 75vh;
         display: grid;
         grid-template-columns: 1fr 1.2fr;
-        grid-template-rows: 1fr auto; 
+        grid-template-rows: 1fr auto;
         border: 1px solid $border-color;
-        backdrop-filter: blur(10px); 
-        background-color: rgba(16, 16, 16, 0.3); 
+        backdrop-filter: blur(10px);
+        background-color: rgba(16, 16, 16, 0.3);
     }
 
     .cell {
@@ -51,9 +53,14 @@ $text-white: #ffffff;
         flex-direction: column;
         border-right: 1px solid $border-color;
         border-bottom: 1px solid $border-color;
-        
-        &:nth-child(2) { border-right: none; }
-        &:nth-child(3) { border-bottom: none; }
+
+        &:nth-child(2) {
+            border-right: none;
+        }
+
+        &:nth-child(3) {
+            border-bottom: none;
+        }
     }
 
     /* --- ZONE 1 : HEADER --- */
@@ -63,6 +70,7 @@ $text-white: #ffffff;
 
         .title-content {
             margin-bottom: 30px;
+
             h1 {
                 font-family: "Anton-Regular", sans-serif;
                 font-size: clamp(50px, 9vw, 130px);
@@ -71,7 +79,7 @@ $text-white: #ffffff;
                 line-height: 0.85;
                 text-transform: uppercase;
                 letter-spacing: -2px;
-                text-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                text-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             }
         }
 
@@ -85,13 +93,14 @@ $text-white: #ffffff;
         }
     }
 
-    /* --- ZONE 2 : FORMULAIRE --- */
+    /* --- ZONE 2 : FORMULAIRE & SUCCESS --- */
     .form-cell {
         grid-column: 2;
         grid-row: 1 / span 2;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0.2); 
+        background-color: rgba(0, 0, 0, 0.2);
 
+        // FORMULAIRE STANDARD
         form {
             display: flex;
             flex-direction: column;
@@ -103,8 +112,9 @@ $text-white: #ffffff;
 
         .input-group {
             position: relative;
-            
-            input, textarea {
+
+            input,
+            textarea {
                 width: 100%;
                 background: none;
                 border: none;
@@ -114,29 +124,41 @@ $text-white: #ffffff;
                 padding: 10px 0;
                 outline: none;
                 text-transform: uppercase;
-                
+
                 &::placeholder {
                     color: rgba(255, 255, 255, 0.15);
                     transition: color 0.3s;
                 }
-                &:focus::placeholder { color: rgba(255, 255, 255, 0.05); }
+
+                &:focus::placeholder {
+                    color: rgba(255, 255, 255, 0.05);
+                }
             }
 
             .focus-line {
-                position: absolute; bottom: 0; left: 0;
-                width: 100%; height: 1px;
-                background-color: rgba(255,255,255,0.2);
-                
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: rgba(255, 255, 255, 0.2);
+
                 &::after {
-                    content: ''; position: absolute; left: 0; bottom: 0;
-                    width: 0%; height: 2px;
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 0%;
+                    height: 2px;
                     background-color: $accent-color;
                     transition: width 0.4s ease;
                 }
             }
 
-            input:focus ~ .focus-line::after,
-            textarea:focus ~ .focus-line::after { width: 100%; }
+            input:focus~.focus-line::after,
+            textarea:focus~.focus-line::after {
+                width: 100%;
+            }
         }
 
         button {
@@ -148,9 +170,9 @@ $text-white: #ffffff;
             align-items: center;
             justify-content: space-between;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             transition: padding-left 0.3s;
-            
+
             span {
                 font-family: "ClashGrotesk-SemiBold";
                 color: $text-white;
@@ -167,9 +189,75 @@ $text-white: #ffffff;
             &:hover {
                 border-bottom-color: $text-white;
                 padding-left: 10px;
-                .arrow-icon { transform: translateX(10px); }
+
+                .arrow-icon {
+                    transform: translateX(10px);
+                }
             }
-            &:disabled { opacity: 0.5; cursor: not-allowed; }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+
+        // --- NOUVEAUX STYLES : MESSAGE DE SUCCÈS/ERREUR ---
+        .status-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            gap: 30px;
+            width: 100%;
+
+            .title-content {
+                h2 {
+                    font-family: "Anton-Regular", sans-serif;
+                    font-size: clamp(40px, 6vw, 80px);
+                    margin: 0;
+                    line-height: 0.9;
+                    text-transform: uppercase;
+                }
+
+                .anton {
+                    color: $accent-color;
+                }
+
+                .outline {
+                    color: transparent;
+                    -webkit-text-stroke: 1px $accent-color;
+                }
+            }
+
+            p {
+                font-family: "ClashGrotesk-SemiBold";
+                color: $text-white;
+                opacity: 0.8;
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+
+            .back-btn {
+                margin-top: 20px;
+                background: none;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 15px 30px;
+                color: white;
+                cursor: pointer;
+                font-family: "ClashGrotesk-SemiBold";
+                letter-spacing: 1px;
+                transition: all 0.3s ease;
+                display: inline-block;
+                width: auto;
+
+                &:hover {
+                    border-color: $accent-color;
+                    background-color: $accent-color;
+                    padding-left: 30px; // Reset hover effect du bouton form
+                }
+            }
         }
     }
 
@@ -197,16 +285,19 @@ $text-white: #ffffff;
                 color: $text-white;
                 text-decoration: none;
                 transition: opacity 0.3s;
-                &:hover { opacity: 0.7; }
+
+                &:hover {
+                    opacity: 0.7;
+                }
             }
 
             .social-links {
                 display: flex;
-                gap: 25px; // Espacement entre les icônes
+                gap: 25px;
 
                 .social-icon {
                     display: block;
-                    width: 32px; // Taille de l'icône
+                    width: 32px;
                     height: 32px;
                     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -214,17 +305,14 @@ $text-white: #ffffff;
                         width: 100%;
                         height: 100%;
                         object-fit: contain;
-                        // Rend l'icône blanche si elle est noire de base
                         filter: brightness(0) invert(1);
                         transition: filter 0.3s ease;
                     }
 
                     &:hover {
-                        transform: translateY(-5px); // Petit rebond vers le haut
-                        
+                        transform: translateY(-5px);
+
                         img {
-                            // Filtre approximatif pour obtenir le rouge #6F040E depuis du blanc
-                            // Tu peux ajuster ou utiliser une icône SVG colorée directement
                             filter: brightness(0) saturate(100%) invert(11%) sepia(94%) saturate(4649%) hue-rotate(345deg) brightness(87%) contrast(98%);
                         }
                     }
@@ -233,12 +321,52 @@ $text-white: #ffffff;
         }
     }
 
+    // ANIMATION FADE IN
+    .fade-in {
+        animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     @media (max-width: 1024px) {
         height: auto;
         padding: 120px 20px;
-        .grid-container { display: flex; flex-direction: column; height: auto; border: none; }
-        .cell { padding: 40px 20px; border: 1px solid $border-color; border-bottom: none; background-color: rgba(16, 16, 16, 0.7); &:last-child { border-bottom: 1px solid $border-color; } }
-        .header-cell .title-content h1 { font-size: 15vw; }
-        .form-cell { order: 3; padding: 60px 20px; }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            border: none;
+        }
+
+        .cell {
+            padding: 40px 20px;
+            border: 1px solid $border-color;
+            border-bottom: none;
+            background-color: rgba(16, 16, 16, 0.7);
+
+            &:last-child {
+                border-bottom: 1px solid $border-color;
+            }
+        }
+
+        .header-cell .title-content h1 {
+            font-size: 15vw;
+        }
+
+        .form-cell {
+            order: 3;
+            padding: 60px 20px;
+        }
     }
 }

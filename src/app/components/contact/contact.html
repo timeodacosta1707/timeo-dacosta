@@ -2,7 +2,7 @@
     <div class="overlay"></div>
 
     <div class="grid-container">
-        
+
         <div class="cell header-cell">
             <div class="title-content">
                 <h1>PRENONS</h1>
@@ -12,7 +12,9 @@
         </div>
 
         <div class="cell form-cell">
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+            @if (formStatus === 'IDLE') {
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="fade-in">
                 <div class="input-group">
                     <input type="text" formControlName="name" placeholder="VOTRE NOM" autocomplete="off">
                     <span class="focus-line"></span>
@@ -28,11 +30,44 @@
                     <span class="focus-line"></span>
                 </div>
 
-                <button type="submit" [disabled]="contactForm.invalid">
-                    <span>ENVOYER LE MESSAGE</span>
+                <button type="submit" [disabled]="contactForm.invalid || isSubmitting">
+                    <span>
+                        @if (isSubmitting) {
+                        ENVOI EN COURS...
+                        } @else {
+                        ENVOYER LE MESSAGE
+                        }
+                    </span>
                     <i class="arrow-icon">→</i>
                 </button>
             </form>
+            }
+
+            @else if (formStatus === 'SUCCESS') {
+            <div class="status-message success fade-in">
+                <div class="title-content">
+                    <h2 class="anton">MERCI</h2>
+                    <h2 class="anton outline">ENVOYÉ</h2>
+                </div>
+                <p>Votre message a bien été transmis. <br> Une confirmation vient de vous être envoyée par email.</p>
+                <button (click)="resetFormState()" class="back-btn">
+                    <span>NOUVEAU MESSAGE</span>
+                </button>
+            </div>
+            }
+
+            @else if (formStatus === 'ERROR') {
+            <div class="status-message error fade-in">
+                <div class="title-content">
+                    <h2 class="anton">OUPS...</h2>
+                </div>
+                <p>Une erreur est survenue lors de l'envoi. <br> Veuillez vérifier votre connexion.</p>
+                <button (click)="resetFormState()" class="back-btn">
+                    <span>RÉESSAYER</span>
+                </button>
+            </div>
+            }
+
         </div>
 
         <div class="cell info-cell">
@@ -40,14 +75,14 @@
                 <span class="label">EMAIL</span>
                 <a href="mailto:{{email}}" class="value email-link">{{ email }}</a>
             </div>
-            
+
             <div class="info-group">
                 <span class="label">RÉSEAUX</span>
                 <div class="social-links">
                     @for (social of socials; track $index) {
-                        <a [href]="social.url" target="_blank" class="social-icon" [title]="social.name">
-                            <img [src]="social.icon" [alt]="social.name">
-                        </a>
+                    <a [href]="social.url" target="_blank" class="social-icon" [title]="social.name">
+                        <img [src]="social.icon" [alt]="social.name">
+                    </a>
                     }
                 </div>
             </div>
