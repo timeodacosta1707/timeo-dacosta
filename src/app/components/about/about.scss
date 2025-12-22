@@ -699,6 +699,161 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        padding: 60px 15px;
+
+        .interests-container {
+            .section-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+                margin-bottom: 40px;
+            }
+        }
+
+        .panels-wrapper {
+            gap: 15px;
+        }
+
+        .interest-panel {
+            height: 280px;
+            border-radius: 15px;
+
+            .panel-content {
+                padding: 25px 20px;
+            }
+
+            .panel-header {
+                .interest-label {
+                    font-size: 0.7rem;
+                    letter-spacing: 1.5px;
+                    margin-bottom: 8px;
+                }
+
+                .interest-topic {
+                    font-size: clamp(1.8rem, 8vw, 2.2rem);
+                    line-height: 1.1;
+                }
+            }
+
+            .interest-text {
+                font-size: 0.9rem;
+                line-height: 1.4;
+                max-width: 100%;
+                margin-top: 12px;
+            }
+
+            .panel-icon {
+                top: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                transform: scale(1.01);
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 50px 10px;
+
+        .interests-container {
+            .section-title {
+                margin-bottom: 30px;
+            }
+        }
+
+        .panels-wrapper {
+            gap: 12px;
+        }
+
+        .interest-panel {
+            min-height: 320px;
+            height: auto;
+            border-radius: 12px;
+
+            .panel-content {
+                padding: 20px 15px;
+                position: relative;
+                min-height: 100%;
+            }
+
+            .panel-header {
+                .interest-label {
+                    font-size: 0.65rem;
+                    margin-bottom: 6px;
+                }
+
+                .interest-topic {
+                    font-size: clamp(1.5rem, 9vw, 2rem);
+                    line-height: 1.1;
+                }
+            }
+
+            .interest-text {
+                font-size: 0.85rem;
+                line-height: 1.5;
+                margin-top: 10px;
+                padding-bottom: 5px;
+            }
+
+            .panel-icon {
+                top: 15px;
+                right: 15px;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    @media (max-width: 375px) {
+        padding: 40px 10px;
+
+        .interests-container {
+            .section-title {
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+                margin-bottom: 25px;
+            }
+        }
+
+        .panels-wrapper {
+            gap: 15px;
+        }
+
+        .interest-panel {
+            min-height: 350px;
+            border-radius: 10px;
+
+            .panel-content {
+                padding: 18px 12px;
+            }
+
+            .panel-header {
+                .interest-label {
+                    font-size: 0.6rem;
+                    margin-bottom: 5px;
+                }
+
+                .interest-topic {
+                    font-size: clamp(1.4rem, 10vw, 1.9rem);
+                    line-height: 1.05;
+                    word-break: break-word;
+                }
+            }
+
+            .interest-text {
+                font-size: 0.8rem;
+                line-height: 1.5;
+                margin-top: 12px;
+                padding-bottom: 8px;
+            }
+
+            .panel-icon {
+                top: 12px;
+                right: 12px;
+                font-size: 1.2rem;
+            }
+        }
+    }
 }
 
 @keyframes slideshow {
